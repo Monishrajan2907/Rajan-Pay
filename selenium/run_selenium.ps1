@@ -143,10 +143,14 @@ $hasPip = $null -ne (Get-Command pip -ErrorAction SilentlyContinue)
 
 if ($hasNpm) {
     Write-Host "[Env] Node/npm found. Installing package dependencies..." -ForegroundColor Green
-    Start-Process npm -ArgumentList "install" -WorkingDirectory $scriptDir -NoNewWindow -Wait
+    Push-Location $scriptDir
+    & npm install
+    Pop-Location
 } elseif ($hasPip) {
     Write-Host "[Env] Python/pip found. Installing requirements..." -ForegroundColor Green
-    Start-Process pip -ArgumentList "install -r requirements.txt" -WorkingDirectory $scriptDir -NoNewWindow -Wait
+    Push-Location $scriptDir
+    & pip install -r requirements.txt
+    Pop-Location
 } else {
     Write-Host "[Warning] Neither Node/npm nor Python/pip was found in system PATH." -ForegroundColor Yellow
     Write-Host "[Info] Running Selenium test execution in PowerShell high-fidelity simulation mode." -ForegroundColor Gray
