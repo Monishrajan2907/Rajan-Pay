@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="RajanPay by Rajan Finance - Access your earned wages anytime, anywhere. India's most trusted Earned Wage Access platform." />
+  <meta name="keywords" content="earned wage access, EWA, salary advance, RajanPay, Rajan Finance, fintech India" />
+  <meta name="author" content="Rajan Finance Pvt. Ltd." />
+  <title>RajanPay - Rajan Finance | Earned Wage Access</title>
+
+  <!-- PWA: Web App Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="shortcut icon" href="favicon.png" />
+
+  <!-- iOS / iPadOS PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="RajanPay" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="167x167" href="icons/icon-192.png" />
+
+  <!-- Android / Chrome PWA -->
+  <meta name="theme-color" content="#6C63FF" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1A1A2E" media="(prefers-color-scheme: dark)" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="RajanPay" />
+
+  <!-- Microsoft Tiles -->
+  <meta name="msapplication-TileImage" content="icons/icon-144.png" />
+  <meta name="msapplication-TileColor" content="#6C63FF" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RajanPay - Earned Wage Access" />
+  <meta property="og:description" content="Access your earned salary before payday. No interest. Instant transfer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="icons/icon-512.png" />
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ===================== SPLASH SCREEN ===================== -->
+<div id="splash-screen" class="splash">
+  <div class="splash-content">
+    <div class="splash-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="24" fill="url(#splashGrad)"/>
+          <path d="M14 24 C14 18 18 14 24 14 C30 14 34 18 34 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M24 34 L24 20 M20 24 L24 20 L28 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="24" cy="34" r="2.5" fill="white"/>
+          <defs>
+            <linearGradient id="splashGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#6C63FF"/>
+              <stop offset="100%" stop-color="#3ECFCF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="splash-brand">
+        <span class="brand-name">RajanPay</span>
+        <span class="brand-sub">by Rajan Finance</span>
+      </div>
+    </div>
+    <div class="splash-loader">
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+    <p class="splash-tagline">Your wages, your time.</p>
+  </div>
+</div>
+
+<!-- ===================== AUTH PAGES ===================== -->
+<div id="auth-page" class="page hidden">
+  <!-- Landing -->
+  <div id="landing-view" class="auth-view active">
+    <div class="auth-hero">
+      <div class="hero-bg-shapes">
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-logo">
+          <div class="logo-pill">
+            <svg viewBox="0 0 28 28" fill="none" width="28" height="28">
+              <circle cx="14" cy="14" r="14" fill="url(#heroGrad)"/>
+              <path d="M8 14 C8 10.5 10.5 8 14 8 C17.5 8 20 10.5 20 14" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M14 20 L14 11.5 M11.5 13.5 L14 11.5 L16.5 13.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="14" cy="20" r="1.5" fill="white"/>
+              <defs>
+                <linearGradient id="heroGrad" x1="0" y1="0" x2="28" y2="28">
+                  <stop offset="0%" stop-color="#6C63FF"/>
+                  <stop offset="100%" stop-color="#3ECFCF"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span>RajanPay</span>
+          </div>
+        </div>
+        <h1 class="hero-title">Access your earnings <span class="gradient-text">before payday</span></h1>
+        <p class="hero-desc">India's most trusted Earned Wage Access platform. Get paid for the work you've already done &mdash; instantly.</p>
+        <div class="hero-stats">
+          <div class="stat-chip"><span class="stat-num">2.4L+</span><span class="stat-lbl">Employees</span></div>
+          <div class="stat-chip"><span class="stat-num">&#8377;890Cr+</span><span class="stat-lbl">Disbursed</span></div>
+          <div class="stat-chip"><span class="stat-num">4.9&#9733;</span><span class="stat-lbl">Rated</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-card-section">
+      <div class="auth-card">
+        <h2>Get Started</h2>
+        <p>Sign in to your account or create a new one</p>
+        <button class="btn btn-primary full-w" onclick="showView('login-view')" id="btn-signin">Sign In</button>
+        <button class="btn btn-outline full-w" onclick="startSignup()" id="btn-register">Create Account</button>
+        <p class="auth-note">By continuing you agree to Rajan Finance's <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login View -->
+  <div id="login-view" class="auth-view">
+    <div class="auth-topbar">
+      <button class="back-btn" onclick="showView('landing-view')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="logo-small">RajanPay</div>
+    </div>
+    <div class="auth-form-wrap">
+      <h2 class="form-title">Welcome back &#128075;</h2>
+      <p class="form-sub">Sign in to access your earned wages</p>
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="login-phone">Mobile Number</label>
+          <div class="input-wrap">
+            <span class="input-prefix">+91</span>
+            <input type="text" id="login-phone" placeholder="9876543210" maxlength="10" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password / MPIN</label>
+          <div class="input-wrap">
+            <input type="password" id="login-password" placeholder="Enter your password" />
+            <button type="button" class="input-suffix-btn" onclick="togglePass('login-password', this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <a href="#" class="forgot-link">Forgot password?</a>
+        <button type="submit" class="btn btn-primary full-w" id="btn-login-submit">Sign In</button>
+      </form>
+      <p class="switch-auth">Don't have an account? <a href="#" onclick="startSignup()">Register here</a></p>
+      <div class="demo-hint">
+        <span>&#128640; Demo: Enter anything and hit Sign In</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SIGNUP FLOW ===================== -->
+<div id="signup-page" class="page hidden">
+  <div class="signup-topbar">
+    <button class="back-btn" id="signup-back-btn" onclick="signupBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="logo-small">RajanPay</div>
+    <div class="step-indicator" id="step-indicator">Step 1 of 5</div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="signup-progress">
+    <div class="progress-track">
+      <div class="progress-fill" id="signup-progress-fill" style="width:20%"></div>
+    </div>
+    <div class="progress-steps">
+      <div class="ps active" id="ps-1"><span>1</span><small>Personal</small></div>
+      <div class="ps" id="ps-2"><span>2</span><small>Identity</small></div>
+      <div class="ps" id="ps-3"><span>3</span><small>Employment</small></div>
+      <div class="ps" id="ps-4"><span>4</span><small>Bank</small></div>
+      <div class="ps" id="ps-5"><span>5</span><small>Done</small></div>
+    </div>
+  </div>
+
+  <!-- Step 1: Personal Info -->
+  <div id="step-1" class="signup-step active-step">
+    <div class="step-header">
+      <div class="step-icon">&#128100;</div>
+      <h2>Personal Information</h2>
+      <p>Let's start with your basic details</p>
+    </div>
+    <form class="step-form" onsubmit="nextStep(event, 2)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="s1-fname">First Name</label>
+          <input type="text" id="s1-fname" placeholder="Rajan" />
+        </div>
+        <div class="form-group">
+          <label for="s1-lname">Last Name</label>
+          <input type="text" id="s1-lname" placeholder="Kumar" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="s1-dob">Date of Birth</label>
+        <input type="date" id="s1-dob" />
+      </div>
+      <div class="form-group">
+        <label for="s1-gender">Gender</label>
+        <select id="s1-gender">
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+          <option>Prefer not to say</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="s1-phone">Mobile Number</label>
+        <div class="input-wrap">
+          <span class="input-prefix">+91</span>
+          <input type="text" id="s1-phone" placeholder="9876543210" maxlength="10" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="s1-email">Email Address</label>
+        <input type="text" id="s1-email" placeholder="rajan@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="s1-addr">Residential Address</label>
+        <textarea id="s1-addr" placeholder="Flat No, Building, Street, Area" rows="2"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="s1-city">City</label>
+          <input type="text" id="s1-city" placeholder="Mumbai" />
+        </div>
+        <div class="form-group">
+          <label for="s1-state">State</label>
+          <select id="s1-state">
+            <option value="">State</option>
+            <option>Maharashtra</option>
+            <option>Delhi</option>
+            <option>Karnataka</option>
+            <option>Tamil Nadu</option>
+            <option>Telangana</option>
+            <option>Gujarat</option>
+            <option>Rajasthan</option>
+            <option>Uttar Pradesh</option>
+            <option>West Bengal</option>
+            <option>Punjab</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="s1-pincode">PIN Code</label>
+        <input type="text" id="s1-pincode" placeholder="400001" maxlength="6" />
+      </div>
+      <button type="submit" class="btn btn-primary full-w">Continue &rarr;</button>
+    </form>
+  </div>
+
+  <!-- Step 2: Identity -->
+  <div id="step-2" class="signup-step">
+    <div class="step-header">
+      <div class="step-icon">&#128282;</div>
+      <h2>Identity Verification</h2>
+      <p>As per RBI guidelines, we need to verify your identity</p>
+    </div>
+    <form class="step-form" onsubmit="nextStep(event, 3)">
+      <div class="form-group">
+        <label for="s2-aadhaar-1">Aadhaar Card Number</label>
+        <div class="aadhaar-input">
+          <input type="text" id="s2-aadhaar-1" placeholder="XXXX" maxlength="4" class="aadhaar-part" onkeyup="aadhaarTab(this, 's2-aadhaar-2')" />
+          <span>&ndash;</span>
+          <input type="text" id="s2-aadhaar-2" placeholder="XXXX" maxlength="4" class="aadhaar-part" onkeyup="aadhaarTab(this, 's2-aadhaar-3')" />
+          <span>&ndash;</span>
+          <input type="text" id="s2-aadhaar-3" placeholder="XXXX" maxlength="4" class="aadhaar-part" />
+        </div>
+        <span class="field-hint">12-digit number on your Aadhaar card</span>
+      </div>
+      <div class="upload-box" id="aadhaar-upload-box">
+        <input type="file" id="aadhaar-file" accept="image/*,.pdf" onchange="handleFileUpload('aadhaar-file', 'aadhaar-upload-box', 'Aadhaar')" />
+        <label for="aadhaar-file" class="upload-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="aadhaar-upload-text">Upload Aadhaar (Front)</span>
+          <small>JPG, PNG or PDF &middot; Max 5MB</small>
+        </label>
+      </div>
+      <div class="form-group" style="margin-top:1.5rem">
+        <label for="s2-pan">PAN Card Number</label>
+        <input type="text" id="s2-pan" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase" />
+        <span class="field-hint">10-character alphanumeric PAN number</span>
+      </div>
+      <div class="upload-box" id="pan-upload-box">
+        <input type="file" id="pan-file" accept="image/*,.pdf" onchange="handleFileUpload('pan-file', 'pan-upload-box', 'PAN Card')" />
+        <label for="pan-file" class="upload-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="pan-upload-text">Upload PAN Card</span>
+          <small>JPG, PNG or PDF &middot; Max 5MB</small>
+        </label>
+      </div>
+      <div class="form-group" style="margin-top:1.5rem">
+        <label for="s2-selfie">Live Selfie Verification</label>
+        <div class="selfie-placeholder" id="selfie-area">
+          <svg viewBox="0 0 64 64" fill="none" width="56" height="56">
+            <circle cx="32" cy="32" r="30" stroke="#6C63FF" stroke-width="1.5" stroke-dasharray="6 4"/>
+            <circle cx="32" cy="26" r="10" fill="#e8e6ff"/>
+            <path d="M14 50 C14 40 22 35 32 35 C42 35 50 40 50 50" fill="#e8e6ff"/>
+          </svg>
+          <p>Camera access needed</p>
+          <button type="button" class="btn btn-sm" onclick="mockSelfie()">Take Selfie</button>
+        </div>
+        <input type="hidden" id="selfie-done" />
+      </div>
+      <button type="submit" class="btn btn-primary full-w">Continue &rarr;</button>
+    </form>
+  </div>
+
+  <!-- Step 3: Employment -->
+  <div id="step-3" class="signup-step">
+    <div class="step-header">
+      <div class="step-icon">&#128188;</div>
+      <h2>Employment Details</h2>
+      <p>Tell us about your workplace</p>
+    </div>
+    <form class="step-form" onsubmit="nextStep(event, 4)">
+      <div class="form-group">
+        <label for="s3-company">Company / Employer Name</label>
+        <input type="text" id="s3-company" placeholder="Tata Consultancy Services" />
+      </div>
+      <div class="form-group">
+        <label for="s3-emp-id">Employee ID</label>
+        <input type="text" id="s3-emp-id" placeholder="EMP001234" />
+      </div>
+      <div class="form-group">
+        <label for="s3-designation">Designation / Job Title</label>
+        <input type="text" id="s3-designation" placeholder="Software Engineer" />
+      </div>
+      <div class="form-group">
+        <label for="s3-dept">Department</label>
+        <input type="text" id="s3-dept" placeholder="Information Technology" />
+      </div>
+      <div class="form-group">
+        <label for="s3-date-joining">Date of Joining</label>
+        <input type="date" id="s3-date-joining" />
+      </div>
+      <div class="form-group">
+        <label for="s3-salary-type">Employment Type</label>
+        <select id="s3-salary-type">
+          <option value="">Select Type</option>
+          <option>Full-Time (Permanent)</option>
+          <option>Contract</option>
+          <option>Part-Time</option>
+          <option>Daily Wage</option>
+          <option>Gig Worker</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="s3-ctc">Monthly Gross Salary (CTC)</label>
+        <div class="input-wrap">
+          <span class="input-prefix">&#8377;</span>
+          <input type="number" id="s3-ctc" placeholder="45000" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="s3-net-salary">Monthly Net (Take-Home) Salary</label>
+        <div class="input-wrap">
+          <span class="input-prefix">&#8377;</span>
+          <input type="number" id="s3-net-salary" placeholder="38000" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="s3-pay-date">Salary Credit Date</label>
+        <select id="s3-pay-date">
+          <option value="">Select pay date</option>
+          <option value="1">1st of every month</option>
+          <option value="5">5th of every month</option>
+          <option value="7">7th of every month</option>
+          <option value="10">10th of every month</option>
+          <option value="15">15th of every month</option>
+          <option value="25">25th of every month</option>
+          <option value="28">28th of every month</option>
+          <option value="last">Last working day</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="s3-hr-email">HR / Payroll Contact Email</label>
+        <input type="text" id="s3-hr-email" placeholder="hr@company.com" />
+        <span class="field-hint">Optional &ndash; helps with payroll integration</span>
+      </div>
+      <div class="upload-box" id="salary-slip-box">
+        <input type="file" id="salary-slip-file" accept="image/*,.pdf" onchange="handleFileUpload('salary-slip-file', 'salary-slip-box', 'Salary Slip')" />
+        <label for="salary-slip-file" class="upload-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="salary-slip-upload-text">Upload Last 3 Months Salary Slips</span>
+          <small>PDF preferred &middot; Max 10MB</small>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary full-w" style="margin-top:1.5rem">Continue &rarr;</button>
+    </form>
+  </div>
+
+  <!-- Step 4: Bank Account -->
+  <div id="step-4" class="signup-step">
+    <div class="step-header">
+      <div class="step-icon">&#127970;</div>
+      <h2>Link Bank Account</h2>
+      <p>Where should we send your wages?</p>
+    </div>
+    <form class="step-form" onsubmit="nextStep(event, 5)">
+      <div class="bank-method-tabs">
+        <button type="button" class="bank-tab active" id="tab-manual" onclick="switchBankTab('manual')">Manual Entry</button>
+        <button type="button" class="bank-tab" id="tab-upi" onclick="switchBankTab('upi')">UPI / NetBanking</button>
+      </div>
+
+      <!-- Manual Entry -->
+      <div id="bank-manual" class="bank-section">
+        <div class="form-group">
+          <label for="s4-acc-name">Account Holder Name</label>
+          <input type="text" id="s4-acc-name" placeholder="Rajan Kumar" />
+        </div>
+        <div class="form-group">
+          <label for="s4-acc-num">Account Number</label>
+          <input type="text" id="s4-acc-num" placeholder="1234567890123456" maxlength="18" />
+        </div>
+        <div class="form-group">
+          <label for="s4-acc-num-confirm">Confirm Account Number</label>
+          <input type="text" id="s4-acc-num-confirm" placeholder="Re-enter account number" maxlength="18" />
+        </div>
+        <div class="form-group">
+          <label for="s4-ifsc">IFSC Code</label>
+          <input type="text" id="s4-ifsc" placeholder="SBIN0001234" maxlength="11" style="text-transform:uppercase" />
+          <span class="field-hint">11-character IFSC code on your cheque</span>
+        </div>
+        <div class="form-group">
+          <label for="s4-bank-name">Bank Name</label>
+          <select id="s4-bank-name">
+            <option value="">Select Bank</option>
+            <option>State Bank of India</option>
+            <option>HDFC Bank</option>
+            <option>ICICI Bank</option>
+            <option>Axis Bank</option>
+            <option>Kotak Mahindra Bank</option>
+            <option>Punjab National Bank</option>
+            <option>Bank of Baroda</option>
+            <option>Canara Bank</option>
+            <option>YES Bank</option>
+            <option>IDFC First Bank</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="s4-acc-type">Account Type</label>
+          <select id="s4-acc-type">
+            <option value="">Select Type</option>
+            <option>Savings Account</option>
+            <option>Current Account</option>
+            <option>Salary Account</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- UPI Section -->
+      <div id="bank-upi" class="bank-section hidden">
+        <div class="upi-banks">
+          <p class="upi-title">Connect via Net Banking</p>
+          <div class="bank-grid">
+            <div class="bank-logo-btn" onclick="selectBank('SBI')">
+              <div class="bank-icon sbi">SBI</div>
+              <span>SBI</span>
+            </div>
+            <div class="bank-logo-btn" onclick="selectBank('HDFC')">
+              <div class="bank-icon hdfc">HDFC</div>
+              <span>HDFC</span>
+            </div>
+            <div class="bank-logo-btn" onclick="selectBank('ICICI')">
+              <div class="bank-icon icici">ICICI</div>
+              <span>ICICI</span>
+            </div>
+            <div class="bank-logo-btn" onclick="selectBank('Axis')">
+              <div class="bank-icon axis">Axis</div>
+              <span>Axis</span>
+            </div>
+            <div class="bank-logo-btn" onclick="selectBank('Kotak')">
+              <div class="bank-icon kotak">KMB</div>
+              <span>Kotak</span>
+            </div>
+            <div class="bank-logo-btn" onclick="selectBank('Other')">
+              <div class="bank-icon other">+</div>
+              <span>Other</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:1.5rem">
+          <label for="s4-upi-id">UPI ID (Optional)</label>
+          <input type="text" id="s4-upi-id" placeholder="rajan@ybl or 9876543210@paytm" />
+        </div>
+      </div>
+
+      <div class="consent-check">
+        <label class="checkbox-label">
+          <input type="checkbox" id="s4-consent" />
+          <span class="checkmark"></span>
+          <span>I authorize Rajan Finance to debit/credit my account for wage advances and repayments as per agreed terms.</span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary full-w">Link Account &amp; Continue &rarr;</button>
+    </form>
+  </div>
+
+  <!-- Step 5: Success -->
+  <div id="step-5" class="signup-step">
+    <div class="success-view">
+      <div class="success-animation">
+        <div class="success-circle">
+          <svg viewBox="0 0 80 80" fill="none" width="80" height="80">
+            <circle cx="40" cy="40" r="38" stroke="url(#successGrad)" stroke-width="3" class="success-ring"/>
+            <path d="M25 40 L35 50 L55 30" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="success-check"/>
+            <defs>
+              <linearGradient id="successGrad" x1="0" y1="0" x2="80" y2="80">
+                <stop offset="0%" stop-color="#6C63FF"/>
+                <stop offset="100%" stop-color="#3ECFCF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="confetti-wrap" id="confetti-wrap"></div>
+      </div>
+      <h2>You're all set! &#127881;</h2>
+      <p>Your RajanPay account is being verified. This usually takes <strong>2&ndash;4 hours</strong>.</p>
+      <div class="success-details">
+        <div class="sd-row"><span>Account Status</span><span class="badge badge-pending">Under Review</span></div>
+        <div class="sd-row"><span>KYC Status</span><span class="badge badge-pending">Pending Verification</span></div>
+        <div class="sd-row"><span>Payroll Link</span><span class="badge badge-info">Initiating</span></div>
+      </div>
+      <button class="btn btn-primary full-w" onclick="goToDashboard()">Go to Dashboard &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MAIN APP ===================== -->
+<div id="app-page" class="page hidden">
+  <!-- Top Nav -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="header-logo">
+        <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+          <circle cx="12" cy="12" r="12" fill="url(#navGrad)"/>
+          <path d="M6 12 C6 9 8.5 7 12 7 C15.5 7 18 9 18 12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12 17 L12 9.5 M10 11.5 L12 9.5 L14 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="17" r="1.2" fill="white"/>
+          <defs>
+            <linearGradient id="navGrad" x1="0" y1="0" x2="24" y2="24">
+              <stop offset="0%" stop-color="#6C63FF"/>
+              <stop offset="100%" stop-color="#3ECFCF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>RajanPay</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn notif-btn" onclick="showNotifications()" id="notif-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span class="notif-dot"></span>
+      </button>
+      <button class="avatar-btn" onclick="showTab('profile')" id="header-avatar-btn">
+        <div class="avatar-circle" id="header-avatar">R</div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Notification Panel -->
+  <div class="notif-panel hidden" id="notif-panel">
+    <div class="notif-header">
+      <h3>Notifications</h3>
+      <button class="text-btn" onclick="closeNotifications()">Mark all read</button>
+    </div>
+    <div class="notif-list">
+      <div class="notif-item unread">
+        <div class="notif-icon green">&#8377;</div>
+        <div class="notif-body">
+          <p><strong>Withdrawal Successful</strong></p>
+          <small>&#8377;5,000 credited to your SBI account</small>
+          <span class="notif-time">Today, 2:30 PM</span>
+        </div>
+      </div>
+      <div class="notif-item unread">
+        <div class="notif-icon purple">&#128279;</div>
+        <div class="notif-body">
+          <p><strong>Payroll Connected</strong></p>
+          <small>TCS payroll integration successful</small>
+          <span class="notif-time">Today, 10:15 AM</span>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-icon blue">&#128202;</div>
+        <div class="notif-body">
+          <p><strong>Salary Updated</strong></p>
+          <small>This month's earned wages have been updated</small>
+          <span class="notif-time">Yesterday</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="app-main" id="app-main">
+
+    <!-- ===== DASHBOARD TAB ===== -->
+    <div id="tab-dashboard" class="tab-content active-tab">
+      <!-- Greeting + Balance Hero -->
+      <div class="dashboard-hero">
+        <div class="greeting-row">
+          <div>
+            <p class="greeting-time" id="greeting-text">Good Morning</p>
+            <h2 class="greeting-name" id="greeting-name">Rajan Kumar &#128075;</h2>
+          </div>
+          <div class="pay-cycle-badge">
+            <span class="pcd-label">Pay Day</span>
+            <span class="pcd-date" id="pay-cycle-date">Jun 28</span>
+          </div>
+        </div>
+
+        <!-- Main Balance Card -->
+        <div class="balance-card">
+          <div class="bc-bg"></div>
+          <div class="bc-content">
+            <div class="bc-top">
+              <span class="bc-label">Total Earned This Month</span>
+              <div class="bc-badge">
+                <span class="pulsedot"></span>
+                <span>Live</span>
+              </div>
+            </div>
+            <div class="bc-amount">
+              <span class="currency">&#8377;</span>
+              <span class="amount" id="total-earned">38,500</span>
+            </div>
+            <div class="bc-meta">
+              <div class="bcm-item">
+                <span class="bcm-label">Days Worked</span>
+                <span class="bcm-val" id="days-worked">22 / 26</span>
+              </div>
+              <div class="bcm-divider"></div>
+              <div class="bcm-item">
+                <span class="bcm-label">Today Earned</span>
+                <span class="bcm-val" id="today-earned">&#8377;1,750</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats Row -->
+        <div class="quick-stats">
+          <div class="qs-card available">
+            <div class="qs-icon">&#128176;</div>
+            <div class="qs-info">
+              <span class="qs-val" id="available-amount">&#8377;15,000</span>
+              <span class="qs-lbl">Available Now</span>
+            </div>
+          </div>
+          <div class="qs-card withdrawn">
+            <div class="qs-icon">&#128228;</div>
+            <div class="qs-info">
+              <span class="qs-val" id="withdrawn-amount">&#8377;8,500</span>
+              <span class="qs-lbl">Withdrawn</span>
+            </div>
+          </div>
+          <div class="qs-card remaining">
+            <div class="qs-icon">&#128197;</div>
+            <div class="qs-info">
+              <span class="qs-val" id="days-remaining">4 days</span>
+              <span class="qs-lbl">To Payday</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Withdraw Section -->
+      <div class="section-card withdraw-card">
+        <div class="section-header">
+          <h3>Quick Withdraw</h3>
+          <span class="limit-badge">Max &#8377;15,000</span>
+        </div>
+        <div class="withdraw-amounts">
+          <button class="amt-btn" onclick="selectAmt(2000)" id="amt-2000">&#8377;2,000</button>
+          <button class="amt-btn" onclick="selectAmt(5000)" id="amt-5000">&#8377;5,000</button>
+          <button class="amt-btn active" onclick="selectAmt(10000)" id="amt-10000">&#8377;10,000</button>
+          <button class="amt-btn custom-btn" onclick="showCustomAmt()" id="amt-custom">Custom</button>
+        </div>
+        <div id="custom-amt-wrap" class="custom-amt-wrap hidden">
+          <div class="input-wrap">
+            <span class="input-prefix">&#8377;</span>
+            <input type="number" id="custom-amt-input" placeholder="Enter amount" />
+          </div>
+        </div>
+        <div class="withdraw-info">
+          <div class="wi-row"><span>Processing Fee</span><span class="fee-val">&#8377;0 <s class="fee-old">&#8377;29</s></span></div>
+          <div class="wi-row"><span>Credited In</span><span class="green-val">Instant &ndash; 2 min</span></div>
+          <div class="wi-row"><span>Repayment</span><span>Auto-deducted on Salary Day</span></div>
+        </div>
+        <button class="btn btn-withdraw full-w" onclick="triggerWithdrawal()" id="btn-withdraw-main">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Withdraw &#8377;10,000 Now
+        </button>
+      </div>
+
+      <!-- Payroll Status -->
+      <div class="section-card">
+        <div class="section-header">
+          <h3>Payroll Integration</h3>
+          <span class="status-dot connected"></span>
+        </div>
+        <div class="payroll-info">
+          <div class="payroll-company">
+            <div class="company-icon">TCS</div>
+            <div class="company-details">
+              <span class="company-name">Tata Consultancy Services</span>
+              <span class="company-dept">IT Department &middot; Software Engineer</span>
+            </div>
+            <div class="payroll-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+              Linked
+            </div>
+          </div>
+          <div class="payroll-stats">
+            <div class="ps-item"><span>Gross Salary</span><span>&#8377;55,000</span></div>
+            <div class="ps-item"><span>Net Take-Home</span><span>&#8377;45,000</span></div>
+            <div class="ps-item"><span>Pay Cycle</span><span>Monthly (28th)</span></div>
+            <div class="ps-item"><span>Last Synced</span><span>Today 09:30 AM</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Earnings Chart -->
+      <div class="section-card">
+        <div class="section-header">
+          <h3>Earnings This Month</h3>
+          <div class="chart-toggle">
+            <button class="ct-btn active" onclick="setChartView('daily', this)">Daily</button>
+            <button class="ct-btn" onclick="setChartView('weekly', this)">Weekly</button>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="earningsChart" height="200"></canvas>
+        </div>
+        <div class="chart-legend">
+          <span><i class="legend-dot earned"></i> Earned</span>
+          <span><i class="legend-dot withdrawn"></i> Withdrawn</span>
+        </div>
+      </div>
+
+      <!-- Recent Transactions Preview -->
+      <div class="section-card">
+        <div class="section-header">
+          <h3>Recent Activity</h3>
+          <button class="text-btn" onclick="showTab('transactions')">See All</button>
+        </div>
+        <div class="txn-list-mini" id="dashboard-txn-list"></div>
+      </div>
+    </div>
+
+    <!-- ===== TRANSACTIONS TAB ===== -->
+    <div id="tab-transactions" class="tab-content">
+      <div class="page-title-row">
+        <h2>Transaction History</h2>
+        <button class="icon-btn" onclick="downloadTransactions()" id="btn-download-txn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" onclick="filterTxn('all', this)">All</button>
+        <button class="filter-btn" onclick="filterTxn('withdrawal', this)">Withdrawals</button>
+        <button class="filter-btn" onclick="filterTxn('repayment', this)">Repayments</button>
+        <button class="filter-btn" onclick="filterTxn('salary', this)">Salary</button>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="txn-summary">
+        <div class="ts-card">
+          <span class="ts-label">Total Withdrawn</span>
+          <span class="ts-val">&#8377;28,500</span>
+          <span class="ts-change positive">&#8593; 3 transactions</span>
+        </div>
+        <div class="ts-card">
+          <span class="ts-label">Total Repaid</span>
+          <span class="ts-val">&#8377;23,000</span>
+          <span class="ts-change neutral">On-time</span>
+        </div>
+      </div>
+
+      <!-- Monthly Chart -->
+      <div class="section-card" style="margin-bottom:1rem">
+        <div class="section-header"><h3>Monthly Overview</h3></div>
+        <div class="chart-wrap"><canvas id="txnChart" height="180"></canvas></div>
+      </div>
+
+      <!-- Full Transaction List -->
+      <div id="full-txn-list" class="full-txn-list"></div>
+    </div>
+
+    <!-- ===== PROFILE TAB ===== -->
+    <div id="tab-profile" class="tab-content">
+      <!-- Profile Hero -->
+      <div class="profile-hero">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar" id="profile-avatar-circle">R</div>
+          <div class="avatar-edit-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+        </div>
+        <div class="profile-info">
+          <h2 id="profile-name">Rajan Kumar</h2>
+          <p id="profile-emp">Software Engineer &middot; TCS</p>
+          <div class="profile-badges">
+            <span class="badge badge-verified">&#10003; KYC Verified</span>
+            <span class="badge badge-active">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credit Score -->
+      <div class="section-card credit-score-card">
+        <div class="cs-left">
+          <span class="cs-label">RajanScore&trade;</span>
+          <div class="cs-score">782</div>
+          <span class="cs-rating">Excellent</span>
+        </div>
+        <div class="cs-right">
+          <div class="cs-gauge-wrap">
+            <canvas id="creditGauge" width="140" height="80"></canvas>
+          </div>
+          <div class="cs-bar-label">
+            <span>Poor</span><span>Fair</span><span>Good</span><span>Excellent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Sections -->
+      <div class="section-card">
+        <div class="section-header"><h3>Personal Details</h3><button class="text-btn" onclick="editProfile('personal')">Edit</button></div>
+        <div class="profile-detail-list">
+          <div class="pdl-row"><span class="pdl-label">Full Name</span><span id="pdl-fullname">Rajan Kumar</span></div>
+          <div class="pdl-row"><span class="pdl-label">Date of Birth</span><span>15 Aug 1995</span></div>
+          <div class="pdl-row"><span class="pdl-label">Mobile</span><span>+91 98765 43210</span></div>
+          <div class="pdl-row"><span class="pdl-label">Email</span><span>rajan@example.com</span></div>
+          <div class="pdl-row"><span class="pdl-label">Address</span><span>Flat 12B, Andheri West, Mumbai - 400058</span></div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header"><h3>Employment Details</h3><button class="text-btn" onclick="editProfile('employment')">Edit</button></div>
+        <div class="profile-detail-list">
+          <div class="pdl-row"><span class="pdl-label">Company</span><span>Tata Consultancy Services</span></div>
+          <div class="pdl-row"><span class="pdl-label">Employee ID</span><span>TCS-EMP-001234</span></div>
+          <div class="pdl-row"><span class="pdl-label">Designation</span><span>Software Engineer</span></div>
+          <div class="pdl-row"><span class="pdl-label">Joining Date</span><span>01 Apr 2021</span></div>
+          <div class="pdl-row"><span class="pdl-label">Gross Salary</span><span>&#8377;55,000/month</span></div>
+          <div class="pdl-row"><span class="pdl-label">Net Salary</span><span>&#8377;45,000/month</span></div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header"><h3>Bank Account</h3><button class="text-btn">Change</button></div>
+        <div class="bank-card-display">
+          <div class="bcd-icon">
+            <svg viewBox="0 0 40 28" fill="none" width="40" height="28">
+              <rect width="40" height="28" rx="5" fill="url(#bankCardGrad)"/>
+              <rect x="0" y="9" width="40" height="6" fill="rgba(0,0,0,0.2)"/>
+              <defs>
+                <linearGradient id="bankCardGrad" x1="0" y1="0" x2="40" y2="28">
+                  <stop offset="0%" stop-color="#667eea"/>
+                  <stop offset="100%" stop-color="#764ba2"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="bcd-info">
+            <span class="bcd-bank">State Bank of India</span>
+            <span class="bcd-acc">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4321</span>
+            <span class="bcd-type">Salary Account &middot; IFSC: SBIN0001234</span>
+          </div>
+          <div class="bcd-status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header"><h3>KYC Status</h3></div>
+        <div class="kyc-list">
+          <div class="kyc-item verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg><span>Aadhaar Card</span><span class="kyc-badge">Verified</span></div>
+          <div class="kyc-item verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg><span>PAN Card</span><span class="kyc-badge">Verified</span></div>
+          <div class="kyc-item verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg><span>Selfie Verification</span><span class="kyc-badge">Verified</span></div>
+          <div class="kyc-item verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg><span>Bank Account</span><span class="kyc-badge">Linked</span></div>
+        </div>
+      </div>
+
+      <!-- Settings & Logout -->
+      <div class="section-card">
+        <div class="settings-list">
+          <button class="setting-item" onclick="alert('Coming soon!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Settings
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-left:auto"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <button class="setting-item" onclick="alert('Coming soon!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            Notifications
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-left:auto"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <button class="setting-item" onclick="alert('Help Center coming soon!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Help &amp; Support
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-left:auto"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <button class="setting-item logout-btn" onclick="handleLogout()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Logout
+          </button>
+        </div>
+      </div>
+      <p class="app-version">RajanPay v2.4.1 &middot; Rajan Finance Pvt. Ltd. &middot; NBFC Reg. No. RF-2019-007</p>
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="showTab('dashboard')" id="nav-dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Dashboard</span>
+    </button>
+    <button class="nav-item" onclick="showTab('transactions')" id="nav-transactions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <span>Transactions</span>
+    </button>
+    <button class="nav-item withdraw-nav" onclick="showTab('dashboard'); setTimeout(()=>document.getElementById('btn-withdraw-main').scrollIntoView({behavior:'smooth'}),100)" id="nav-withdraw">
+      <div class="withdraw-nav-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" width="24" height="24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+      <span>Withdraw</span>
+    </button>
+    <button class="nav-item" onclick="showTab('profile')" id="nav-profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Profile</span>
+    </button>
+  </nav>
+</div>
+
+<!-- ===================== MODAL: Withdrawal ===================== -->
+<div class="modal-overlay hidden" id="withdrawal-modal">
+  <div class="modal-card">
+    <div class="modal-icon">&#128184;</div>
+    <h3 id="modal-title">Confirm Withdrawal</h3>
+    <p id="modal-body">You are about to withdraw &#8377;10,000 from your earned wages. This will be repaid automatically on your salary day (28th).</p>
+    <div class="modal-details" id="modal-details">
+      <div class="md-row"><span>Amount</span><strong id="modal-amount">&#8377;10,000</strong></div>
+      <div class="md-row"><span>Processing Fee</span><strong class="text-green">&#8377;0</strong></div>
+      <div class="md-row"><span>To Account</span><strong>SBI &bull;&bull;&bull;&bull;4321</strong></div>
+      <div class="md-row"><span>Repayment Date</span><strong id="modal-repay-date">Jun 28, 2026</strong></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmWithdrawal()" id="btn-confirm-withdraw">Confirm &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL: Success ===================== -->
+<div class="modal-overlay hidden" id="success-modal">
+  <div class="modal-card success-modal-card">
+    <div class="success-anim">
+      <svg viewBox="0 0 80 80" fill="none" width="80" height="80">
+        <circle cx="40" cy="40" r="38" stroke="url(#sm-grad)" stroke-width="3"/>
+        <path d="M25 40 L35 50 L55 30" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="sm-grad" x1="0" y1="0" x2="80" y2="80">
+            <stop offset="0%" stop-color="#6C63FF"/>
+            <stop offset="100%" stop-color="#3ECFCF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h3>Transfer Successful! &#127881;</h3>
+    <p id="success-modal-body">&#8377;10,000 has been credited to your SBI account ending in &bull;&bull;&bull;&bull;4321</p>
+    <div class="txn-id-box">
+      <span>TXN ID:</span><span id="success-txn-id">RF202606041234</span>
+    </div>
+    <button class="btn btn-primary full-w" onclick="closeSuccessModal()">Done</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast hidden" id="toast">
+  <span id="toast-msg">Action completed</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

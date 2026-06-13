@@ -1,0 +1,16 @@
+{
+  "name": "rajanpay-appium-tests",
+  "version": "1.0.0",
+  "description": "Appium E2E Mobile Tests for RajanPay",
+  "main": "appium_test.js",
+  "scripts": {
+    "test": "node appium_test.js"
+  },
+  "dependencies": {
+    "webdriverio": "^8.32.4",
+    "appium": "^2.5.1",
+    "xlsx": "^0.18.5"
+  },
+  "author": "Rajan Finance Pvt. Ltd.",
+  "license": "UNLICENSED"
+}

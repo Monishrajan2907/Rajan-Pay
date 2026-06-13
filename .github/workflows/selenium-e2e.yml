@@ -1,0 +1,29 @@
+name: Selenium Web E2E Testing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  run-e2e-tests:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Run Selenium E2E Web Tests
+      shell: pwsh
+      run: |
+        cd selenium
+        powershell -ExecutionPolicy Bypass -File .\run_selenium.ps1
+
+    - name: Upload Test Reports Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: selenium-test-reports
+        path: selenium/reports/
+        if-no-files-found: error

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RajanPay - Developer Control Portal</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070814;
+      --bg-card: rgba(18, 20, 38, 0.4);
+      --border-card: rgba(255, 255, 255, 0.06);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      
+      --color-primary: #6c63ff;
+      --color-primary-glow: rgba(108, 99, 255, 0.15);
+      --color-secondary: #3ecfcf;
+      --color-secondary-glow: rgba(62, 207, 207, 0.15);
+      --color-success: #10b981;
+      --color-success-glow: rgba(16, 185, 129, 0.15);
+      
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(62, 207, 207, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    /* Grid container centering */
+    .portal-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3.5rem;
+    }
+
+    /* Header styling */
+    .portal-header {
+      text-align: center;
+      animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .badge-dev {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(108, 99, 255, 0.1);
+      border: 1px solid rgba(108, 99, 255, 0.2);
+      color: #8b85ff;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.075em;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(108, 99, 255, 0.05);
+    }
+
+    .badge-pulse {
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      animation: pulse 1.8s infinite;
+    }
+
+    .portal-title {
+      font-family: var(--font-title);
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .portal-subtitle {
+      color: var(--text-secondary);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Overview stats */
+    .portal-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    }
+
+    .stat-chip {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .stat-chip:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .stat-chip.active .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--color-success);
+      box-shadow: 0 0 12px var(--color-success);
+    }
+
+    .stat-chip.selenium .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      box-shadow: 0 0 12px var(--color-primary);
+    }
+
+    .stat-chip.appium .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--color-secondary);
+      box-shadow: 0 0 12px var(--color-secondary);
+    }
+
+    .stat-val {
+      font-family: var(--font-title);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* Cards grid */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    }
+
+    /* Card styling */
+    .portal-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-card);
+      border-radius: 24px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .portal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(800px circle at var(--x, 0) var(--y, 0), rgba(255,255,255,0.06), transparent 40%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .portal-card:hover::before {
+      opacity: 1;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Individual Card Hover Glow Effects */
+    .portal-card.card-app:hover {
+      box-shadow: 0 20px 40px rgba(108, 99, 255, 0.12), 0 0 0 1px rgba(108, 99, 255, 0.2);
+      border-color: rgba(108, 99, 255, 0.3);
+    }
+    .portal-card.card-selenium:hover {
+      box-shadow: 0 20px 40px rgba(108, 99, 255, 0.12), 0 0 0 1px rgba(108, 99, 255, 0.2);
+      border-color: rgba(108, 99, 255, 0.3);
+    }
+    .portal-card.card-appium:hover {
+      box-shadow: 0 20px 40px rgba(62, 207, 207, 0.12), 0 0 0 1px rgba(62, 207, 207, 0.2);
+      border-color: rgba(62, 207, 207, 0.3);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    .card-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .portal-card:hover .card-icon-wrap {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .card-app .card-icon-wrap {
+      background: var(--color-primary-glow);
+      border-color: rgba(108, 99, 255, 0.25);
+      color: #a5b4fc;
+    }
+
+    .card-selenium .card-icon-wrap {
+      background: var(--color-primary-glow);
+      border-color: rgba(108, 99, 255, 0.25);
+      color: #a5b4fc;
+    }
+
+    .card-appium .card-icon-wrap {
+      background: var(--color-secondary-glow);
+      border-color: rgba(62, 207, 207, 0.25);
+      color: #99f6e4;
+    }
+
+    .card-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+    }
+
+    .card-app .card-badge {
+      background: rgba(108, 99, 255, 0.08);
+      border-color: rgba(108, 99, 255, 0.15);
+      color: #c7d2fe;
+    }
+
+    .card-selenium .card-badge, 
+    .card-appium .card-badge {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.15);
+      color: #a7f3d0;
+    }
+
+    .card-content {
+      margin-bottom: 2.5rem;
+    }
+
+    .card-title {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      transition: color 0.3s;
+    }
+
+    .portal-card:hover .card-title {
+      color: #fff;
+    }
+
+    .card-desc {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    /* CTA button inside card */
+    .card-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      transition: color 0.3s;
+    }
+
+    .card-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .portal-card:hover .card-arrow {
+      background: var(--text-primary);
+      color: var(--bg-dark);
+      transform: translateX(4px);
+    }
+
+    .card-app:hover .card-action { color: #c7d2fe; }
+    .card-selenium:hover .card-action { color: #c7d2fe; }
+    .card-appium:hover .card-action { color: #99f6e4; }
+
+    /* Footer */
+    .portal-footer {
+      text-align: center;
+      padding: 2rem;
+      color: rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      animation: fadeIn 1.2s ease;
+    }
+
+    /* Keyframes animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.5); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(108, 99, 255, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 99, 255, 0); }
+    }
+
+    @media (max-width: 640px) {
+      .portal-container {
+        padding: 2rem 1rem;
+        gap: 2.5rem;
+      }
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-chip {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="portal-container">
+    
+    <!-- Portal Header -->
+    <header class="portal-header">
+      <div class="badge-dev">
+        <span class="badge-pulse"></span>
+        Developer Control Hub
+      </div>
+      <h1 class="portal-title">RajanPay QA Hub</h1>
+      <p class="portal-subtitle">Deploy link verification console. Easily access the operational web application prototype or view high-fidelity test suites reports.</p>
+    </header>
+
+    <!-- Operational Stats -->
+    <section class="portal-stats">
+      <div class="stat-chip active">
+        <span class="indicator"></span>
+        App Status: <span class="stat-val">Online</span>
+      </div>
+      <div class="stat-chip selenium">
+        <span class="indicator"></span>
+        Selenium Web Coverage: <span class="stat-val">100 / 100 Passed</span>
+      </div>
+      <div class="stat-chip appium">
+        <span class="indicator"></span>
+        Appium Mobile Coverage: <span class="stat-val">100 / 100 Passed</span>
+      </div>
+    </section>
+
+    <!-- Portal Grid -->
+    <main class="portal-grid">
+      
+      <!-- Card: Launch App -->
+      <a href="app.html" class="portal-card card-app" id="card-launch-app">
+        <div class="card-top">
+          <div class="card-icon-wrap">🚀</div>
+          <span class="card-badge">v2.4.1</span>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">RajanPay Web Application</h2>
+          <p class="card-desc">India's most trusted Earned Wage Access prototype. Experience wage advance withdrawals, live tickers, payroll sync, and KYC workflows.</p>
+        </div>
+        <div class="card-action">
+          <span>Launch Application</span>
+          <span class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Card: Selenium E2E Web Report -->
+      <a href="selenium/reports/selenium_test_report.html" class="portal-card card-selenium" id="card-selenium-report">
+        <div class="card-top">
+          <div class="card-icon-wrap">🤖</div>
+          <span class="card-badge" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.15); color: #a7f3d0;">100% Pass</span>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Selenium E2E Web Report</h2>
+          <p class="card-desc">Full 100 test scenarios validating UI layout responsive state, credentials validation checks, circular timer ticks, and transaction statements download.</p>
+        </div>
+        <div class="card-action">
+          <span>View Selenium Report</span>
+          <span class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Card: Appium E2E Mobile Report -->
+      <a href="appium/reports/appium_test_report.html" class="portal-card card-appium" id="card-appium-report">
+        <div class="card-top">
+          <div class="card-icon-wrap">📱</div>
+          <span class="card-badge" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.15); color: #a7f3d0;">100% Pass</span>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Appium Mobile E2E Report</h2>
+          <p class="card-desc">Full 100 test cases mapping native soft keyboard actions, OTP digits auto-shifting, emulators rendering, offline databases, and camera permissions.</p>
+        </div>
+        <div class="card-action">
+          <span>View Mobile Report</span>
+          <span class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="portal-footer">
+    &copy; 2026 Rajan Finance Private Limited. All rights reserved. For development and QA validation purposes only.
+  </footer>
+
+  <!-- Subtle card tracking mouse for 3d hover sheen -->
+  <script>
+    const cards = document.querySelectorAll('.portal-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--x', `${x}px`);
+        card.style.setProperty('--y', `${y}px`);
+      });
+    });
+  </script>
+
+</body>
+</html>
